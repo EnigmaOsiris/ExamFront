@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <form
+        class=""
+        [formGroup]="form"
+        #employeeForm="ngForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            name="name"
+            formControlName="name"
+            class="form-control" 
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Apellidos</label>
+          <input
+            type="text"
+            name="lastName"
+            formControlName="last_name"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="birthday">fecha De Nacimiento</label>
+          <input
+            type="date"
+            name="birthday"
+            formControlName="birthday"
+            class="form-control"
+            required
+          />
+        </div>
+        <input type="submit" value="Registrar" class="btn btn-primary" />
+      </form>
+    </div>
+    <div class="col-8">
+      <input
+        type="text"
+        style="padding: 8px; margin: 15px auto; width: 30%;"
+        placeholder="Type to filter the name column..."
+        (keyup)="updateFilter($event)"
+      />
+
+      <ngx-datatable
+        #table
+        class="material"
+        [columns]="columns"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [limit]="10"
+        [rows]="rows"
+      >
+      </ngx-datatable>
+    </div>
+  </div>
+</div>

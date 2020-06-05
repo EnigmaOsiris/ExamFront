@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="list-group">
+                <input [(ngModel)]="query" type="text" name="" id="" class="list-group-item list-group-item-action active bg-light text-dark" placeholder="Buscar" >                
+                
+                <a [dragData]="g"  *ngFor="let g of groups | filter:query" href="#" class="list-group-item list-group-item-action" draggable>{{g.name}}</a>
+                
+              </div>
+        </div>
+        <div class="col-6  " >
+            <div class="table" style="height: 250px; overflow-y: scroll; border: 1px solid tomato;" droppable (onDrop)="onItemDrop($event)">
+                <table class="table"  style="height: 250px !important; overflow-y: scroll;">
+                    <thead *ngIf="employees.length>0">
+                      <tr>                    
+                        <th scope="col"><input type="checkbox" (change)="setStatus()"  [(ngModel)]="groupSelected" name="" id=""></th>
+                        <th scope="col">{{groupName}}</th>
+                        <th scope="col"><button class="btn btn-sm btn-outline-danger" (click)="reset()"><i class="fa fa-trash" aria-hidden="true"></i></button></th>
+                      </tr>
+                    </thead>
+                    <tbody >
+                      <tr *ngFor= "let e of employees">                    
+                        <td><input type="checkbox" name="" id="" [(ngModel)]="e.isSelected"></td>
+                        <td>{{e.name}}</td>
+                      </tr>                 
+                    </tbody>
+                  </table>
+            </div>
+            <input type="button" value="Continuar" class="btn btn-success" (click)="printSelected()" >
+        </div>
+    </div>
+</div>
